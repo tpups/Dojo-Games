@@ -1,0 +1,119 @@
+@using DojoQuest.Models
+@model Player
+
+<! <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Registration</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+    <script type="text/javascript" src="js/materialize.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
+    <script>
+            $(document).ready(function(){
+           $('select').material_select();
+           });
+    </script>
+</head>
+<style>
+    .pagelayout
+    {
+        padding-top: 20px;
+    }
+
+    #title
+    {
+        font-family: 'Righteous', cursive;
+        font-size: 80px;
+        text-align: center;
+    }
+
+    #subtitle
+    {
+        font-family: 'Righteous', cursive;
+        font-size: 40px;
+        text-align: center;
+    }
+
+    #form
+    {
+        padding: 20px;
+        background-color: #f2f4f8;
+    }
+
+    #usernamefield, #passwordfield
+    {
+        margin-left: 130px;
+    }
+
+    #button
+    {
+        display: block;
+        margin-right: auto;
+        margin-left: auto;
+    }
+
+    .input-field label
+    {
+        color: #e57373;
+    }
+
+    .input-field input:focus + label 
+    {
+        color: #e57373 !important;
+    }
+
+    .row .input-field input:focus
+    {
+        border-bottom: 1px #e57373 !important;
+        box-shadow: 0 1px 0 0 #e57373 !important;
+    }
+
+    .registerlink
+    {
+        width: auto;
+        display: block;
+        text-align: center;
+        margin-top: 30px;
+    }
+
+</style>
+<body>
+    <h2 class="red-text text-darken-2" id="title">Summer Quest</h2>
+    <h3 class="red-text text-darken-2" id="subtitle">Log In</h3>
+
+    <div class="pagelayout">
+        <div class="row">
+          <form class="col s8 offset-s2 z-depth-1 " id="form" asp-action="PlayerLogin" asp-controller="Home" method="post">
+            <div class="row">
+              <div class="input-field col s8" id="usernamefield">
+                <input asp-for="Username" id="Username" type="text" class="validate">
+                <label class="active" asp-for="Username">Username</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s8" id="passwordfield">
+                <input asp-for="Password" id="Password" type="password" class="validate">
+                <label asp-for="Password" class="active" for="Password">Password</label>
+              </div>
+            </div>
+            
+            <button class="btn waves-effect waves-light red" type="submit" name="action" id="button">Submit
+                <i class="material-icons right">chevron_right</i>
+            </button>
+
+            <a class="registerlink" href="/Registration">Need to Register?</a>
+          </form>
+        </div>
+    </div>
+
+    
+</body>
+</html>

@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.SpaServices.Webpack;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using DojoQuest.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace DojoQuest
 {
@@ -22,7 +24,17 @@ namespace DojoQuest
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddSession();
             services.AddMvc();
+            services.AddDbContext<DojoContext>(options => options.UseMySql(Configuration["DBInfo:ConnectionString"]));
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsPolicy",
+                    builder => builder.AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader()
+                    .AllowCredentials());
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -40,7 +52,8 @@ namespace DojoQuest
             {
                 app.UseExceptionHandler("/Home/Error");
             }
-
+            app.UseSession();
+            app.UseCors("CorsPolicy");
             app.UseStaticFiles();
 
             app.UseMvc(routes =>

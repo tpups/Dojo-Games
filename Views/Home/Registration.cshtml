@@ -1,0 +1,201 @@
+@using DojoQuest.Models
+@model ValidPlayer
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Registration</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+    <script type="text/javascript" src="js/materialize.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
+    <style>
+            .pagelayout
+            {
+                padding-top: 20px;
+                width: auto;
+            }
+            
+            #title
+            {
+                font-family: 'Righteous', cursive;
+                font-size: 80px;
+                text-align: center;
+               
+            }
+
+            .headings
+            {
+                width: auto;
+            }
+        
+            #subtitle
+            {
+                font-family: 'Righteous', cursive;
+                font-size: 40px;
+                text-align: center;
+            }
+        
+            .input-field label
+            {
+                color: #e57373;
+            }
+        
+            .input-field input:focus + label 
+            {
+                color: #e57373 !important;
+            }
+        
+            .row .input-field input:focus
+            {
+                border-bottom: 1px #e57373 !important;
+                box-shadow: 0 1px 0 0 #e57373 !important;
+            }
+        
+            #usernamefield, #passwordfield
+            {
+                margin-left: 100px;
+            }
+        
+            #button
+            {
+                
+                display: block;
+                margin-right: auto;
+                margin-left: auto;
+            }
+        
+            #form
+            {
+                padding: 20px;
+                background-color: #f2f4f8;
+            }
+        
+            .type
+            {
+                color: #e57373;
+            }
+        
+        
+            .character
+            {
+                text-align: center;
+            }
+
+            .container1
+            {
+                padding-left: 90px;
+                padding-top: 20px;
+            }
+
+            .registerlink
+            {
+                width: auto;
+                height: 40px;
+                display: block;
+                text-align: center;
+                margin-top: 20px;
+            }
+
+        [type="radio"]:checked + span:after,
+         
+        [type="radio"].with-gap:checked + span:before,
+          
+        [type="radio"].with-gap:checked + span:after {
+          
+           border: 2px solid #e57373;
+          
+         }
+          
+          
+        [type="radio"]:checked + span:after,
+          
+        [type="radio"].with-gap:checked + span:after {
+          
+           background-color: #e57373;
+          
+         }
+</style>
+</head>
+<body>
+
+    <div class="background">
+        <div class="headings">
+            <h2 class="red-text text-darken-2" id="title">Summer Quest</h2>
+            <h3 class="red-text text-darken-2" id="subtitle">Registration</h3>
+        </div>
+
+        <div class="pagelayout">
+            <div class="row">
+              <form class="col s6 offset-s3 z-depth-1" id="form" asp-action="Create" method="post" asp-controller="Home">
+                <div class="row">
+                  <div class="input-field col s6" id="usernamefield">
+                    <input asp-for="Username" id="Username" type="text" class="validate">
+                    <label asp-for="Username">Username</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="input-field col s6" id="passwordfield">
+                    <input asp-for="Password" id="Password" type="password" class="validate">
+                    <label asp-for="Password">Password</label>
+                  </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s6" id="passwordfield">
+                      <input asp-for="Confirm_Password" id="Confirm_Password" type="password" class="validate">
+                      <label asp-for="Confirm_Password">Confirm Password</label>
+                    </div>
+                  </div>
+                <h5 class="character">Select Character</h5>
+                <div class="container">
+                    <p>
+                        <label>
+                          <input asp-for="Class" class="with-gap" name="Class" type="radio" value="mage"/>
+                          <span asp-for="Class" class="red-text">Mage</span>
+                        </label>
+                    </p>
+                    <p>
+                        <label>
+                          <input asp-for="Class" class="with-gap" name="Class" type="radio" value="hunter" />
+                          <span asp-for="Class" class="red-text">Hunter</span>
+                        </label>
+                    </p>
+                    <p>
+                        <label>
+                          <input asp-for="Class" class="with-gap" name="Class" type="radio" value="samurai" />
+                          <span asp-for="Class" class="red-text">Samurai</span>
+                        </label>
+                    </p>
+                    <p>
+                        <label>
+                          <input asp-for="Class" class="with-gap" name="Class" type="radio" value="ninja" />
+                          <span asp-for="Class" class="red-text">Ninja</span>
+                        </label>
+                    </p>
+                    <p>
+                        <label>
+                          <input asp-for="Class" class="with-gap" name="Class" type="radio" value="priest" />
+                          <span asp-for="Class" class="red-text">Priest</span>
+                        </label>
+                    </p>
+                </div>
+            
+                <button class="btn waves-effect waves-light red" type="submit" name="action" id="button">Submit
+                    <i class="material-icons right">chevron_right</i>
+                </button>
+            
+                <a href="/Login" class="registerlink">Already Registered?</a>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>
